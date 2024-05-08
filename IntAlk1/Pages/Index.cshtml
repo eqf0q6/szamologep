@@ -1,0 +1,29 @@
+﻿@page
+@using CalculatorApp.Pages
+@model IndexModel
+@{
+    ViewData["Title"] = "Calculator";
+}
+<h1>@ViewData["Title"]</h1>
+<form method="post">
+    <label for="number1">Number 1:</label>
+    <input type="number" id="number1" asp-for="Number1" />
+    <label for="operator">Operator:</label>
+    <select id="operator" asp-for="Operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <label for="number2">Number 2:</label>
+    <input type="number" id="number2" asp-for="Number2" />
+    <input type="submit" value="Calculate" />
+</form>
+@if (Model.Result != double.NaN)
+{
+    <p>Result: @Model.Result</p>
+}
+else
+{
+    <p>Error: Invalid input or division by zero.</p>
+}
